@@ -11,12 +11,12 @@ from machine import Pin, PWM
 i2c = I2C(0, sda=Pin(0), scl=Pin(1))
 oled = SSD1306_I2C(128, 64, i2c)
 
-rows = [Pin(i, Pin.OUT) for i in [19, 18, 17, 16]]
-cols = [Pin(i, Pin.OUT) for i in [12, 13, 14, 15]]
-leds = led_multiplex.LedMultiplex(rows, cols, 1, 90)
+cols = [Pin(i, Pin.OUT) for i in [2, 3, 5, 13, 14, 15]]
+rows = [Pin(i, Pin.OUT) for i in [16, 17, 18, 26, 27, 28]]
+leds = led_multiplex.LedMultiplex(rows, cols, 90)
 
 gamebuttons = namedtuple('GameButtons', ['start', 'stop'])
-buttons = gamebuttons(start=Pin(2, Pin.IN, Pin.PULL_UP), stop=Pin(3, Pin.IN, Pin.PULL_UP))
+buttons = gamebuttons(start=Pin(22, Pin.IN, Pin.PULL_UP), stop=Pin(21, Pin.IN, Pin.PULL_UP))
 
 
 oled.fill(1)
